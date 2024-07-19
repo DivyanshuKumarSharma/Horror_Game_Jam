@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class AnimControllerSwitcher : MonoBehaviour
 {
-
     public Animator animator;
     public RuntimeAnimatorController Idle;
     public RuntimeAnimatorController Moving;
     public RuntimeAnimatorController Running;
     public RuntimeAnimatorController Jumping;
     public RuntimeAnimatorController Strafing;
+    public RuntimeAnimatorController NormalAttack;
+    public RuntimeAnimatorController HeavyAttack;
 
     private PlayerMovement playerMovement;
 
@@ -22,7 +23,7 @@ public class AnimControllerSwitcher : MonoBehaviour
         }
 
         playerMovement = GetComponent<PlayerMovement>();
-        animator.runtimeAnimatorController = Jumping;
+        animator.runtimeAnimatorController = Idle;
     }
 
     void Update()
@@ -30,9 +31,17 @@ public class AnimControllerSwitcher : MonoBehaviour
         Animate();
     }
 
-    void Animate() {
-
-        if (playerMovement.isMoving)
+    void Animate()
+    {
+        if (playerMovement.isAttacking)
+        {
+            SwitchController(NormalAttack);
+        }
+        else if (playerMovement.isHeavyAttacking)
+        {
+            SwitchController(HeavyAttack);
+        }
+        else if (playerMovement.isMoving)
         {
             SwitchController(Moving);
         }
@@ -44,12 +53,15 @@ public class AnimControllerSwitcher : MonoBehaviour
         {
             SwitchController(Strafing);
         }
+        else if (playerMovement.isJumping)
+        {
+            SwitchController(Jumping);
+        }
         else
         {
             SwitchController(Idle);
         }
     }
-
 
     void SwitchController(RuntimeAnimatorController newController)
     {
@@ -58,5 +70,4 @@ public class AnimControllerSwitcher : MonoBehaviour
             animator.runtimeAnimatorController = newController;
         }
     }
-
 }

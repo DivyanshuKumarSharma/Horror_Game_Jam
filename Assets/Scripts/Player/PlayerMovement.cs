@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool isMoving = false;
     [HideInInspector] public bool isJumping = false;
     [HideInInspector] public bool isStrafing = false;
+    [HideInInspector] public bool isAttacking = false;
+    [HideInInspector] public bool isHeavyAttacking = false;
 
     [HideInInspector]
     public bool canMove = true;
@@ -38,7 +40,11 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = 20.0f;
     [SerializeField] private float jumpForce = 10;
     private float verticalVelocity = 0;
-    [HideInInspector] public bool isAttacking = false;
+
+    [Header("Item")]
+    public Inventory inventory;
+    public Transform handTransform;
+    private GameObject currentItemInHand;
 
     void Start()
     {
@@ -54,13 +60,16 @@ public class PlayerMovement : MonoBehaviour
         // Make sure the baseball bat is a child of the right arm
         baseballBat.SetParent(rightArm);
     }
+
     void Update()
     {
         HandleMovement();
         ApplyGravity();
         MoveCharacter();
         HandleCameraRotation();
-        HandleAttack();
+        HandleAttacks();
+        HandleItemPickup();
+        HandleItemSelection();
     }
 
     void LateUpdate()
@@ -123,69 +132,42 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void HandleAttack()
+    private void HandleAttacks()
     {
-        if (Input.GetMouseButtonDown(0) && !isAttacking)
+        if (Input.GetMouseButtonDown(0) && !isAttacking && !isHeavyAttacking)
         {
-            Debug.Log("Left mouse button clicked, initiating attack.");
-            StartCoroutine(Attack());
+            // Determine attack type based on input (for example, hold Shift for heavy attack)
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                StartCoroutine(HeavyAttack());
+            }
+            else
+            {
+                StartCoroutine(NormalAttack());
+            }
         }
     }
 
-    private IEnumerator Attack()
+    private IEnumerator NormalAttack()
     {
         isAttacking = true;
-        Debug.Log("Attack coroutine started.");
+        playerAnim.SetTrigger("normalAttack");
 
-        // Initial positions and rotations
-        Vector3 initialArmPosition = rightArm.localPosition;
-        Quaternion initialArmRotation = rightArm.localRotation;
-
-        Debug.Log("Initial arm position: " + initialArmPosition);
-        Debug.Log("Initial arm rotation: " + initialArmRotation);
-
-        // Prepare the arm for the attack (move back)
-        Vector3 attackPosition = initialArmPosition + new Vector3(-0.5f, 0, 0); // Adjust as needed
-        Quaternion attackRotation = initialArmRotation * Quaternion.Euler(0, 0, -30); // Adjust as needed
-
-        Debug.Log("Attack position: " + attackPosition);
-        Debug.Log("Attack rotation: " + attackRotation);
-
-        // Move back
-        float elapsedTime = 0;
-        float attackDuration = 0.1f; // Adjust as needed
-        while (elapsedTime < attackDuration)
-        {
-            rightArm.localPosition = Vector3.Lerp(initialArmPosition, attackPosition, elapsedTime / attackDuration);
-            rightArm.localRotation = Quaternion.Slerp(initialArmRotation, attackRotation, elapsedTime / attackDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        Debug.Log("Moved back to attack position.");
-
-        // Move forward to hit
-        elapsedTime = 0;
-        attackDuration = 0.2f; // Adjust as needed
-        while (elapsedTime < attackDuration)
-        {
-            Vector3 hitPosition = initialArmPosition + new Vector3(0.5f, 0, 0); // Further than the initial position
-            Quaternion hitRotation = initialArmRotation * Quaternion.Euler(0, 0, 30); // Adjust as needed
-
-            rightArm.localPosition = Vector3.Lerp(attackPosition, hitPosition, elapsedTime / attackDuration);
-            rightArm.localRotation = Quaternion.Slerp(attackRotation, hitRotation, elapsedTime / attackDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        Debug.Log("Moved forward to hit.");
-
-        // Reset to initial position and rotation
-        rightArm.localPosition = initialArmPosition;
-        rightArm.localRotation = initialArmRotation;
+        // Example attack animation coroutine
+        yield return new WaitForSeconds(0.5f); // Adjust timing based on your animation
 
         isAttacking = false;
-        Debug.Log("Attack coroutine finished.");
+    }
+
+    private IEnumerator HeavyAttack()
+    {
+        isHeavyAttacking = true;
+        playerAnim.SetTrigger("heavyAttack");
+
+        // Example heavy attack animation coroutine
+        yield return new WaitForSeconds(1.0f); // Adjust timing based on your animation
+
+        isHeavyAttacking = false;
     }
 
     private void AdjustArmPositions()
@@ -193,4 +175,50 @@ public class PlayerMovement : MonoBehaviour
         rightArm.position = playerCamera.transform.position + playerCamera.transform.TransformDirection(rightArmOffset);
         leftArm.position = playerCamera.transform.position + playerCamera.transform.TransformDirection(leftArmOffset);
     }
+
+    private void HandleItemPickup()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, 2f))
+            if (inventory.AddItem(hit.collider.GetComponent<Item>())) Debug.Log($"Picked up item: {hit.collider.GetComponent<Item>().itemName}");
+            else Debug.Log("Inventory is full.");
+    }
+
+
+    private void HandleItemSelection()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                EquipItem(i);
+            }
+        }
+    }
+
+    private void EquipItem(int index)
+    {
+        Item item = inventory.GetItem(index);
+        if (item == null)
+        {
+            Debug.LogWarning($"No item found at index: {index}");
+            return;
+        }
+
+        // Destroy previous item in hand if exists
+        if (currentItemInHand != null)
+        {
+            Destroy(currentItemInHand);
+        }
+
+        // Instantiate new item in hand
+        currentItemInHand = Instantiate(item.gameObject, handTransform);
+        currentItemInHand.transform.localPosition = Vector3.zero;
+        currentItemInHand.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
+        currentItemInHand.SetActive(true);
+
+        Debug.Log($"Equipped item: {item.itemName}");
+    }
+
+
+
 }
