@@ -33,8 +33,12 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool isJumping = false;
     [HideInInspector] public bool isStrafing = false;
 
-    [HideInInspector]
-    public bool canMove = true;
+    [HideInInspector] public bool canMove = true;
+
+    [HideInInspector] public Transform respawnPoint;
+
+    public GameObject gameMenuUI;
+    private GameMenu gameMenu;
 
     private float gravity = 20.0f;
     [SerializeField] private float jumpForce = 10;
@@ -45,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        gameMenu = gameMenuUI.GetComponent<GameMenu>();
         if (playerAnim == null)
         {
             playerAnim = GetComponent<Animator>();
@@ -59,12 +64,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        HandleMovement();
-        ApplyGravity();
-        MoveCharacter();
-        HandleCameraRotation();
-        HandleAttack();
-
+        if (!gameMenu.isPaused)
+        {
+            HandleMovement();
+            ApplyGravity();
+            MoveCharacter();
+            HandleCameraRotation();
+            HandleAttack();
+        }
     }
 
     void LateUpdate()
