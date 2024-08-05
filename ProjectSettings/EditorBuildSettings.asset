@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/Game-Scenes/Menu.unity
     guid: 100eeb478d8ff4ece9d603aa98536a4e
   - enabled: 1
     path: Assets/Scenes/Game-Scenes/Prologue.unity
@@ -24,8 +24,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Game-Scenes/Stairwell-Fight.unity
     guid: 7ed347ade6600c441ac47a6586b09f6f
   - enabled: 1
+    path: Assets/Scenes/Game-Scenes/Floor-15-transition.unity
+    guid: 9f83f3c532b99447082565a7009729e2
+  - enabled: 1
     path: Assets/Scenes/Game-Scenes/Floor-15.unity
     guid: 6a5e563cb1bbb465184987ee22dd2eb2
+  - enabled: 1
+    path: Assets/Scenes/Game-Scenes/Stairwell-Fight-2.unity
+    guid: c8b0b43f2a264495189f89e268236652
+  - enabled: 1
+    path: Assets/Scenes/Game-Scenes/Floor-30-transition.unity
+    guid: f4ced77553b7e41de824a83420b82b8f
   - enabled: 1
     path: Assets/Scenes/Game-Scenes/Floor-30.unity
     guid: 7032ebb9b98c14d989f924a8ebd4d40a

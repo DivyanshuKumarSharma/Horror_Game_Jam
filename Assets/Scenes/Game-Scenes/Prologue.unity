@@ -551,11 +551,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 690600307}
   storyLines:
-  - Hey World
-  - How are you doing this fine evening
-  - I was wondering if you would like to join me in this presentation.
-  - Kill another mockingbird
-  - Jill valentine in the building
+  - Hey, let me tell you a story about jack and jill
+  - They were madly in love with each other
+  - They came to a remote town near the city for their vacation
+  - 'They booked a room in a shady apartment '
+  - Jack entered the building with Jill.
+  - Jill was talking to the receptionist about something, While jack was parking
+    the car and entered after sometime.
   textDisplayTime: 5
   sceneToLoad: Lobby
 --- !u!1 &1493289310

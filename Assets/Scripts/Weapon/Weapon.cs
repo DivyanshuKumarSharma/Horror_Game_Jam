@@ -8,17 +8,24 @@ public class Weapon : MonoBehaviour
     [SerializeField] public bool isPickedUp = false;
     [SerializeField] public bool isSelected = false;
 
-    public GameObject player;
-
     public string weaponName;
-
-    public float currentDamage;
-    private PlayerMovement playerMovement;
+    private float currentDamage;
+    [SerializeField]private PlayerMovement playerMovement;
 
     private void Start()
     {
-        playerMovement = player.GetComponent<PlayerMovement>();
-        currentDamage = baseDamage; // Initialize current damage
+        // Find the player GameObject using the "Player" tag
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+            currentDamage = baseDamage; // Initialize current damage
+        }
+        else
+        {
+            Debug.LogWarning("Player with tag 'Player' not found.");
+        }
     }
 
     private void Update()
@@ -28,7 +35,7 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (playerMovement.isAttacking && isPickedUp)
+        if (playerMovement != null && playerMovement.isAttacking && isPickedUp)
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)

@@ -15,13 +15,24 @@ public class FloorManager : MonoBehaviour
     public int enemy_spawn_rate;
     public Transform stairwell; // Assign the stairwell transform in the Inspector
 
+    public int initialLevel = 0;
+
     void Start()
     {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Player with tag 'Player' not found.");
+        }
         // Initialize two floors: one at the player's level and one above
+        currentLevel = initialLevel;
         floors[0] = InstantiateFloor(0);
         floors[1] = InstantiateFloor(1);
         currentFloorIndex = 0;
-        currentLevel = 0;
     }
 
     void Update()

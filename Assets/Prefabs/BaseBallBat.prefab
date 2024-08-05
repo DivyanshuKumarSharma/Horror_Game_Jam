@@ -1,5 +1,72 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6194448743685347082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432546282866335454}
+  - component: {fileID: 8630412312421067056}
+  - component: {fileID: 3139028133942874614}
+  m_Layer: 0
+  m_Name: baseball-item
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1432546282866335454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194448743685347082}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8718177018196670406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8630412312421067056
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194448743685347082}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.14, y: 0.8, z: 0.11}
+  m_Center: {x: 0, y: 0.4, z: -0.00009995047}
+--- !u!114 &3139028133942874614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194448743685347082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e491f3abf838e4490a5c70b0c8959fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: BaseBallBat
 --- !u!1001 &8718177018196274502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18,47 +85,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21166217
+      value: 1.823
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.50126624
+      value: 0.883
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.07147175
+      value: 1.698
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9937528
+      value: 0.9872702
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.035426207
+      value: -0.059055712
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07471125
+      value: -0.062329922
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07495765
+      value: 0.13388447
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -4.681
+      value: -5.734
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -8.26
+      value: -8.024
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -8.289
+      value: 15.848
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1432546282866335454}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       insertIndex: -1
@@ -96,7 +166,7 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 0
   m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_ImplicitTensor: 0
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -121,7 +191,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.8, z: 0.1}
+  m_Size: {x: 0.29, y: 1.04, z: 0.41}
   m_Center: {x: 0, y: 0.4, z: -0.00009995047}
 --- !u!114 &6627750467282991204
 MonoBehaviour:
@@ -135,8 +205,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117b84d94c6ce4e4b8d5b16106f96cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  baseDamage: 25
   pickupRange: 2
   isPickedUp: 0
   isSelected: 0
   player: {fileID: 3581354920001820069, guid: e400a9c1bb6e7417da502dd7d2821d99, type: 3}
+  weaponName: 
+  currentDamage: 0
+--- !u!4 &8718177018196670406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
+  m_PrefabInstance: {fileID: 8718177018196274502}
+  m_PrefabAsset: {fileID: 0}
