@@ -21,8 +21,15 @@ public class Inventory : MonoBehaviour
 
     public void AddWeapon(Weapon weapon)
     {
-        weapons.Add(weapon);
-        Debug.Log("Weapon added: " + weapon.weaponName);
+        if (!HasWeapon(weapon))
+        {
+            weapons.Add(weapon);
+            Debug.Log("Weapon added: " + weapon.weaponName);
+        }
+        else
+        {
+            Debug.Log("Weapon already in inventory: " + weapon.weaponName);
+        }
     }
 
     public Weapon GetWeapon(int index)
@@ -67,5 +74,17 @@ public class Inventory : MonoBehaviour
     public int GetWeaponCount()
     {
         return weapons.Count;
+    }
+
+    public bool HasWeapon(Weapon weapon)
+    {
+        foreach (Weapon w in weapons)
+        {
+            if (w.weaponName == weapon.weaponName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

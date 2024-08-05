@@ -150,10 +150,18 @@ public class PlayerMovement : MonoBehaviour
 
                 if (weapon != null && !weapon.isPickedUp)
                 {
-                    playerInventory.AddWeapon(weapon);
-                    weapon.PickUp();
-                    EquipWeapon(weapon);
-                    Debug.Log("Picked up weapon: " + weapon.name);
+                    // Check if weapon is already in inventory
+                    if (!playerInventory.HasWeapon(weapon))
+                    {
+                        playerInventory.AddWeapon(weapon);
+                        weapon.PickUp();
+                        EquipWeapon(weapon);
+                        Debug.Log("Picked up weapon: " + weapon.name);
+                    }
+                    else
+                    {
+                        Debug.Log("Weapon already in inventory: " + weapon.weaponName);
+                    }
                 }
                 else if (powerUp != null && playerInventory.SelectedWeapon != null)
                 {
