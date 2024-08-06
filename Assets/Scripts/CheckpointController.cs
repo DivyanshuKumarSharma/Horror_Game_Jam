@@ -25,7 +25,7 @@ public class CheckpointController : MonoBehaviour
     {
         gotCheckPoint = true;
         respawnPoint = newPosition;
-        respawnHP = 100f;
+        respawnHP = playerState.playerHP + 300f;
         Debug.Log("Checkpoint set at: " + respawnPoint.position + " with HP: " + respawnHP);
 
         // Set checkpoint message
