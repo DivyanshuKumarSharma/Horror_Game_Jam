@@ -10,26 +10,27 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject healthBarPrefab;
     private Transform healthBarTransform;
     private Vector3 initialHealthBarScale;
+    private Animator animator;
 
     void Start()
     {
         currentHealth = maxHealth;
         InitializeHealthBar();
         UpdateHealthBar();
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("Animator component not found on " + gameObject.name);
+        }
     }
 
     private void InitializeHealthBar()
     {
         if (healthBarPrefab != null)
         {
-            // Instantiate the health bar as a child of the enemy
             GameObject healthBarInstance = Instantiate(healthBarPrefab, transform);
             healthBarTransform = healthBarInstance.transform;
-
-            // Position the health bar above the enemy
             healthBarTransform.localPosition = new Vector3(0, 1.5f, 0); // Adjust as needed
-
-            // Store the initial scale of the health bar
             initialHealthBarScale = healthBarTransform.localScale;
         }
     }
@@ -38,7 +39,6 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        Debug.Log(gameObject.name + " took damage: " + damage + ", current health: " + currentHealth);
         UpdateHealthBar();
 
         if (currentHealth <= 0)
@@ -55,14 +55,16 @@ public class EnemyHealth : MonoBehaviour
             Vector3 newScale = initialHealthBarScale;
             newScale.x *= healthPercentage;
             healthBarTransform.localScale = newScale;
-            Debug.Log("Health bar updated. Current health: " + currentHealth);
         }
     }
 
     private void Die()
     {
         // Handle enemy death here (e.g., play animation, destroy game object)
-        //Debug.Log("Enemy died!");
-        Destroy(gameObject);
+        if (animator != null)
+        {
+            animator.SetTrigger("Dead");
+        }
+        Destroy(gameObject, 2f); // Adjust delay as needed
     }
 }

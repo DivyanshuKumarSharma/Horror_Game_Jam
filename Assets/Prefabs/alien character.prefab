@@ -32,14 +32,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100116}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.5056423, z: 0, w: 0.86274326}
+  m_LocalRotation: {x: 0, y: 0.50564235, z: 0, w: 0.86274326}
   m_LocalPosition: {x: -1.691865, y: 0.20516956, z: -4.219354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3153280354524094333}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 60.748, z: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 5
@@ -49,11 +49,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100116}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9df7021e1cc3dda4181323979d90c1ea, type: 3}
-  m_Controller: {fileID: 9100000, guid: 016e205a34300fb4b89029b56c37edac, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 8357fafd6f34bfb4e9a090dff3ad81aa, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3c52861a04956ef48bd87ce028583704, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -145,11 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b58676c331da6748952ea3b0d95b753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 10
-  viewAngle: 156
+  viewRadius: 50
+  viewAngle: 360
   targetMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
   obstacleMask:
     serializedVersion: 2
     m_Bits: 8
