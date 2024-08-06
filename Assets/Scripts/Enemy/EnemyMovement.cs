@@ -8,7 +8,10 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     private Transform target;
     private Animator animator;
-    private float stoppingDistance = 1.5f; // Distance at which the enemy stops
+    private float stoppingDistance = 2f; // Distance at which the enemy stops
+
+    private float attackCooldown = 2.5f; // Cooldown between attacks
+    private float lastAttackTime;
 
     void Start()
     {
@@ -44,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
                 agent.isStopped = true;
                 animator.SetBool("isWalking", false);
                 animator.SetTrigger("Attack"); // Set attacking animation
-                // Add your attack logic here
+                TryToDamagePlayer();
             }
             else
             {
@@ -59,10 +62,37 @@ public class EnemyMovement : MonoBehaviour
         animator.SetBool("isWalking", false);
     }
 
+    private void TryToDamagePlayer()
+    {
+        if (Time.time - lastAttackTime >= attackCooldown)
+        {
+            lastAttackTime = Time.time;
+
+            // Assuming the player has a tag "Player" and the PlayerHealth component
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, stoppingDistance);
+            foreach (var hitCollider in hitColliders)
+            {
+                if (hitCollider.CompareTag("Player"))
+                {
+                    PlayerHealth playerHealth = hitCollider.GetComponent<PlayerHealth>();
+                    if (playerHealth != null)
+                    {
+                        playerHealth.TakeDamage(10f); // Adjust the damage amount as needed
+                    }
+                }
+            }
+        }
+    }
+
     public void Die()
     {
-
         animator.SetTrigger("Dead");
         Destroy(gameObject, 2f); // Adjust delay as needed
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, stoppingDistance);
     }
 }

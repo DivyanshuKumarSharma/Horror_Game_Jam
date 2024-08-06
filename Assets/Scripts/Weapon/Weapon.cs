@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public bool isSelected = false;
 
     public string weaponName;
-    private float currentDamage;
+    [SerializeField]private float currentDamage;
     [SerializeField]private PlayerMovement playerMovement;
 
     private void Start()
@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (playerMovement != null && playerMovement.isAttacking && isPickedUp)
+        if (playerMovement != null && playerMovement.isAttacking)
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)

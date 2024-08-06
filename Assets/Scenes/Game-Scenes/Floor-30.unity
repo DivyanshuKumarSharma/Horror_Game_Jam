@@ -548,7 +548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.282319
+      value: -8.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -556,23 +556,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -222.40067
+      value: -229.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.012241865
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.9999251
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 181.403
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -593,8 +593,106 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 682539961}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 682539960}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 682539959}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 682539963}
   m_SourcePrefab: {fileID: 100100000, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
+--- !u!1 &682539958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 87c3c2e637519694a9a4849c18980daa, type: 3}
+  m_PrefabInstance: {fileID: 682539957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &682539959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682539958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86fff6fb071b4c46bcf94ca23fa5078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcAnimator: {fileID: 682539961}
+  revealAnimationName: face_reveal
+  endCreditsSceneName: Ending
+--- !u!114 &682539960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682539958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a97011d9a764b38bcd538b4a9a76d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  interactText: Interact with Jill
+  dialogues:
+  - 'JILL: Hey baby!!'
+  - 'YOU: Hi, Are you allright? There are aliens everywhere.'
+  - 'JILL: I missed you, where were you?'
+  - 'JILL: I want to show you something!!'
+  - 'JILL: AHHHHHHHHHHHHHHHHHHHHH!!!!!!'
+  isStarted: 0
+  rotationSpeed: 0.01
+--- !u!95 &682539961
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682539958}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 51e4a136c55b441319d3f86d80a6e5c2, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &682539963
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682539958}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.41
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.84, z: 0}
 --- !u!1001 &775330604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1572,6 +1670,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1281159676}
     m_Modifications:
+    - target: {fileID: 3498990719306612481, guid: 846306d9cf8f94e54b20110beede23ca, type: 3}
+      propertyPath: nextObj
+      value: 
+      objectReference: {fileID: 1339614984}
     - target: {fileID: 3498990719306612481, guid: 846306d9cf8f94e54b20110beede23ca, type: 3}
       propertyPath: nextTask
       value: Look for Jill

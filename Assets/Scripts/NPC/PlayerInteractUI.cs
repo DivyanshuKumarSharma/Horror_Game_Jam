@@ -45,7 +45,7 @@ public class PlayerInteractUI : MonoBehaviour
         interactText.text = interactable.getInteractText();
     }
 
-    private void hide() {
+    public void hide() {
         interactUIContainer.SetActive(false);
     }
 

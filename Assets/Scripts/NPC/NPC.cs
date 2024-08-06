@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NPC : MonoBehaviour, IInteractable
 {
@@ -11,6 +8,8 @@ public class NPC : MonoBehaviour, IInteractable
     private DialogueSystem dialogueSystem;
     [HideInInspector] public bool isStarted = false;
     public float rotationSpeed = 2f;
+
+    private AlienGirlNPC alienGirl;
 
     void Start()
     {
@@ -24,6 +23,9 @@ public class NPC : MonoBehaviour, IInteractable
                 dialogueSystem = dialogueManager.GetComponent<DialogueSystem>();
             }
         }
+
+        // Get the GirlfriendNPC component if it exists in the scene
+        alienGirl = GetComponent<AlienGirlNPC>();
     }
 
     void Update()
@@ -46,17 +48,22 @@ public class NPC : MonoBehaviour, IInteractable
         if (!isStarted)
         {
             dialogueSystem.StartDialogue(dialogues);
-            // Trigger animation
-            // Play sound
             isStarted = true;
         }
         else if (!dialogueSystem.isDone)
         {
             dialogueSystem.DisplayNextSentence();
-        }
-        else
-        {
-            isStarted = false;
+
+            if (dialogueSystem.isDone)
+            {
+                isStarted = false;
+                // Call the method to handle the reveal and scene transition
+                if (alienGirl != null)
+                {
+                    alienGirl.OnDialoguesExhausted();
+                    enabled = false;
+                }
+            }
         }
     }
 

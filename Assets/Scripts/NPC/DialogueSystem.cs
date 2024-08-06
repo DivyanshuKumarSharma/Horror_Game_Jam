@@ -46,8 +46,8 @@ public class DialogueSystem : MonoBehaviour
     public void EndDialogue()
     {
         isDone = true;
-        dialoguePanel.SetActive(false);
         dialogueText.text = "";
+        dialoguePanel.SetActive(false);
         alreadyStarted = false;
     }
 
