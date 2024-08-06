@@ -164,15 +164,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7123354219185686271, guid: 846306d9cf8f94e54b20110beede23ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00020915316
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7123354219185686271, guid: 846306d9cf8f94e54b20110beede23ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1800003
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: 7123354219185686271, guid: 846306d9cf8f94e54b20110beede23ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000010944903
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 7123354219185686271, guid: 846306d9cf8f94e54b20110beede23ca, type: 3}
       propertyPath: m_LocalRotation.w
@@ -724,7 +724,7 @@ MonoBehaviour:
   floorPrefab: {fileID: 1953295097252634956, guid: bb84b9117beb3b245a00992638c3706e, type: 3}
   player: {fileID: 0}
   floorHeight: 4
-  enemyPrefab: {fileID: 2024614609068160141, guid: 70d99b2d284044d329615fa216b93087, type: 3}
+  enemyPrefab: {fileID: 100116, guid: e22dcbd33214353499520516808ca0c3, type: 3}
   enemy_spawn_rate: 1
   stairwell: {fileID: 651551778}
   initialLevel: 0
@@ -1141,17 +1141,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6627750467282991204, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
+      propertyPath: baseDamage
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627750467282991204, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
+      propertyPath: weaponName
+      value: Baseballbat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627750467282991204, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
+      propertyPath: currentDamage
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 6921453111312232606, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
       propertyPath: m_Size.x
-      value: 0.8
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 6921453111312232606, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
       propertyPath: m_Size.y
-      value: 1.43
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 6921453111312232606, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
       propertyPath: m_Size.z
-      value: 0.74
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760258647513242369, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
+      propertyPath: MaxDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760258647513242369, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718177018196372454, guid: f1723a629e8c09b4c89110e38af63de0, type: 3}
       propertyPath: m_Name

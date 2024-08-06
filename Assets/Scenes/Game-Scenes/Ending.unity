@@ -552,7 +552,7 @@ MonoBehaviour:
   storyText: {fileID: 690600307}
   storyLines:
   - '!!!  EL FIN  !!! '
-  - I'LL BE RIGHT BACK
+  - BE RIGHT BACK
   - 'Made by: BleakD, Kian, Seek, Justin and starshipinfinity'
   textDisplayTime: 5
   sceneToLoad: Menu
