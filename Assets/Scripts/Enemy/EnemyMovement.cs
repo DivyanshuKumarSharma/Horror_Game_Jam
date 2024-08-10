@@ -8,9 +8,9 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     private Transform target;
     private Animator animator;
-    private float stoppingDistance = 2f; // Distance at which the enemy stops
+    public float stoppingDistance = 2f; // Distance at which the enemy stops
 
-    private float attackCooldown = 2.5f; // Cooldown between attacks
+    public float attackCooldown = 2.5f; // Cooldown between attacks
     private float lastAttackTime;
 
     void Start()

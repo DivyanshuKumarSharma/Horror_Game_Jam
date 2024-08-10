@@ -28,6 +28,7 @@ public class NPC : MonoBehaviour, IInteractable
         alienGirl = GetComponent<AlienGirlNPC>();
     }
 
+
     void Update()
     {
         // Optionally handle any updates needed for NPC here

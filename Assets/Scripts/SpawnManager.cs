@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -46,25 +47,39 @@ public class SpawnManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Scene loaded: " + scene.name);
+
+        // Initialize or reset necessary references
+        InitializeReferences();
+
+        // Delay positioning to ensure everything is loaded
+        StartCoroutine(PositionPlayerAfterDelay(0.1f)); // Adjust the delay as needed
+    }
+
+    private IEnumerator PositionPlayerAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         PositionPlayer();
     }
 
-    void PositionPlayer()
+    private void InitializeReferences()
     {
-        
+        // Ensure all critical references are set
+        playerSpawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint")?.transform;
+        // Other initialization code...
+    }
+
+    public void PositionPlayer()
+    {
         GameObject player = PersistentPlayerManager.Instance.GetPlayerInstance();
 
         if (player != null)
         {
             Debug.Log("Player found.");
-            if (playerSpawnPoint == null)
-            {
-                playerSpawnPoint = GameObject.Find("PlayerSpawnPoint")?.transform;
-            }
 
+            // Check if respawnPoint exists; if not, fallback to playerSpawnPoint
             if (playerSpawnPoint != null)
             {
                 player.transform.position = playerSpawnPoint.position;

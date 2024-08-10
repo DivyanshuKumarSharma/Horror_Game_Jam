@@ -66,6 +66,6 @@ public class EnemyHealth : MonoBehaviour
         {
             animator.SetTrigger("Dead");
         }
-        Destroy(gameObject, 2f); // Adjust delay as needed
+        Destroy(gameObject, 1f); // Adjust delay as needed
     }
 }

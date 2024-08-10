@@ -555,6 +555,7 @@ MonoBehaviour:
   - BE RIGHT BACK
   - 'Made by: BleakD, Kian, Seek, Justin and starshipinfinity'
   textDisplayTime: 5
+  isEnding: 1
   sceneToLoad: Menu
 --- !u!1 &1493289310
 GameObject:

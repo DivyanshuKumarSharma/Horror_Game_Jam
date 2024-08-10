@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6194448743685347082
+--- !u!1 &7523330372146116783
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1432546282866335454}
-  - component: {fileID: 8630412312421067056}
-  - component: {fileID: 3139028133942874614}
+  - component: {fileID: 4800060024560343720}
+  - component: {fileID: 3553767155393084067}
+  - component: {fileID: 322216329321617846}
   m_Layer: 0
   m_Name: baseball-item
   m_TagString: Untagged
@@ -18,28 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1432546282866335454
+--- !u!4 &4800060024560343720
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6194448743685347082}
+  m_GameObject: {fileID: 7523330372146116783}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.000000006519258, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8718177018196670406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8630412312421067056
+--- !u!65 &3553767155393084067
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6194448743685347082}
+  m_GameObject: {fileID: 7523330372146116783}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -52,15 +52,15 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.14, y: 0.8, z: 0.11}
+  m_Size: {x: 0.44, y: 0.89, z: 0.23}
   m_Center: {x: 0, y: 0.4, z: -0.00009995047}
---- !u!114 &3139028133942874614
+--- !u!114 &322216329321617846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6194448743685347082}
+  m_GameObject: {fileID: 7523330372146116783}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e491f3abf838e4490a5c70b0c8959fa6, type: 3}
@@ -85,15 +85,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.823
+      value: -0.579
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.883
+      value: 3.087
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.698
+      value: 8.431
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -128,7 +128,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 400000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1432546282866335454}
+      addedObject: {fileID: 4800060024560343720}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 97517604619949e4181e4fd84e478db8, type: 3}
       insertIndex: -1
@@ -197,7 +197,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.29, y: 1.04, z: 0.41}
+  m_Size: {x: 0.44, y: 0.89, z: 0.23}
   m_Center: {x: 0, y: 0.4, z: -0.00009995047}
 --- !u!114 &6627750467282991204
 MonoBehaviour:
@@ -211,12 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117b84d94c6ce4e4b8d5b16106f96cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 25
-  pickupRange: 2
+  baseDamage: 45
+  pickupRange: 1
   isPickedUp: 0
   isSelected: 0
-  weaponName: 
-  currentDamage: 0
+  weaponName: Baseballbat
+  currentDamage: 45
   playerMovement: {fileID: 0}
 --- !u!81 &4940987685123702367
 AudioListener:
@@ -247,7 +247,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 3
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -282,7 +282,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

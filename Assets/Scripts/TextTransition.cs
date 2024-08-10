@@ -7,7 +7,8 @@ public class TextTransition : MonoBehaviour
 {
     public TextMeshProUGUI storyText; 
     public string[] storyLines;
-    public float textDisplayTime = 5f; 
+    public float textDisplayTime = 5f;
+    public bool isEnding = false;
 
     private int currentLineIndex = 0;
     private bool isTextDisplayed = false;
@@ -45,6 +46,10 @@ public class TextTransition : MonoBehaviour
             currentLineIndex++;
             timer = 0f;
             isTextDisplayed = true;
+        }
+        else if(isEnding)
+        {
+            Application.Quit();
         }
         else
         {

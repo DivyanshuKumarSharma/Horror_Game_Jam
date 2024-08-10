@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CheckpointController : MonoBehaviour
 {
@@ -7,17 +8,29 @@ public class CheckpointController : MonoBehaviour
     [HideInInspector] public float respawnHP;
     [HideInInspector] public bool gotCheckPoint = false;
     public Transform respawnPoint;
+    public GameObject playerSpawnPoint; // Reference to the PlayerSpawnPoint GameObject
 
     [Header("Checkpoint UI")]
     public TextMeshProUGUI checkpointMessageText;
 
     void Start()
     {
+        playerSpawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint");
         playerState = GetComponent<PlayerHealth>();
     }
 
     void Update()
     {
+        if (playerSpawnPoint == null)
+        {
+            playerSpawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint");
+            Debug.Log("FOUND PLAYER SPAWN");
+        }
+        else
+        {
+            Debug.Log("FOUND PLAYER SPAWN");
+        }
+
         RespawnIfFall();
     }
 
@@ -25,7 +38,7 @@ public class CheckpointController : MonoBehaviour
     {
         gotCheckPoint = true;
         respawnPoint = newPosition;
-        respawnHP = playerState.playerHP + 300f;
+        respawnHP = 100f;
         Debug.Log("Checkpoint set at: " + respawnPoint.position + " with HP: " + respawnHP);
 
         // Set checkpoint message
@@ -38,11 +51,19 @@ public class CheckpointController : MonoBehaviour
 
     private void RespawnIfFall()
     {
-        if (transform.position.y < -10f)
+        if (transform.position.y < -2f)
         {
             Debug.Log("Player fell. Respawning at checkpoint.");
-            transform.position = respawnPoint.position;
-            Physics.SyncTransforms();
+
+            // Use the SpawnManager to handle player positioning
+            if (SpawnManager.Instance != null)
+            {
+                SpawnManager.Instance.PositionPlayer();
+            }
+            else
+            {
+                Debug.LogError("SpawnManager instance is not found.");
+            }
         }
     }
 }

@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         characterController = GetComponent<CharacterController>();
         gameMenu = gameMenuUI.GetComponent<GameMenu>();
         playerInventory = GetComponent<Inventory>();
